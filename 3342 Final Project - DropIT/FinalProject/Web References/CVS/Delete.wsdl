@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="updateFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="document" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="displayByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="displayByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="displayByUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="saveDeletedFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveDeletedFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="addFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="document" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="addFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cardno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="exdt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cvv" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="plan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="price" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addFilesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserFiles">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUserFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserFilesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateuser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateuserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="size">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sizeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="planValidate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="planValidateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="planValidateResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="downloadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="downloadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="downloadFileResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="updateFileSoapIn">
+    <wsdl:part name="parameters" element="tns:updateFile" />
+  </wsdl:message>
+  <wsdl:message name="updateFileSoapOut">
+    <wsdl:part name="parameters" element="tns:updateFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="displayByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:displayByUser" />
+  </wsdl:message>
+  <wsdl:message name="displayByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:displayByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteFileSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteFile" />
+  </wsdl:message>
+  <wsdl:message name="deleteFileSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveDeletedFileSoapIn">
+    <wsdl:part name="parameters" element="tns:saveDeletedFile" />
+  </wsdl:message>
+  <wsdl:message name="saveDeletedFileSoapOut">
+    <wsdl:part name="parameters" element="tns:saveDeletedFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="addFileSoapIn">
+    <wsdl:part name="parameters" element="tns:addFile" />
+  </wsdl:message>
+  <wsdl:message name="addFileSoapOut">
+    <wsdl:part name="parameters" element="tns:addFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="addFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:addFiles" />
+  </wsdl:message>
+  <wsdl:message name="addFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:addFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getUser" />
+  </wsdl:message>
+  <wsdl:message name="getUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserFiles" />
+  </wsdl:message>
+  <wsdl:message name="getUserFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteUser" />
+  </wsdl:message>
+  <wsdl:message name="deleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateuserSoapIn">
+    <wsdl:part name="parameters" element="tns:updateuser" />
+  </wsdl:message>
+  <wsdl:message name="updateuserSoapOut">
+    <wsdl:part name="parameters" element="tns:updateuserResponse" />
+  </wsdl:message>
+  <wsdl:message name="sizeSoapIn">
+    <wsdl:part name="parameters" element="tns:size" />
+  </wsdl:message>
+  <wsdl:message name="sizeSoapOut">
+    <wsdl:part name="parameters" element="tns:sizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="planValidateSoapIn">
+    <wsdl:part name="parameters" element="tns:planValidate" />
+  </wsdl:message>
+  <wsdl:message name="planValidateSoapOut">
+    <wsdl:part name="parameters" element="tns:planValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="downloadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:downloadFile" />
+  </wsdl:message>
+  <wsdl:message name="downloadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:downloadFileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DeleteSoap">
+    <wsdl:operation name="updateFile">
+      <wsdl:input message="tns:updateFileSoapIn" />
+      <wsdl:output message="tns:updateFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="displayByUser">
+      <wsdl:input message="tns:displayByUserSoapIn" />
+      <wsdl:output message="tns:displayByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteFile">
+      <wsdl:input message="tns:deleteFileSoapIn" />
+      <wsdl:output message="tns:deleteFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="saveDeletedFile">
+      <wsdl:input message="tns:saveDeletedFileSoapIn" />
+      <wsdl:output message="tns:saveDeletedFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addFile">
+      <wsdl:input message="tns:addFileSoapIn" />
+      <wsdl:output message="tns:addFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addFiles">
+      <wsdl:input message="tns:addFilesSoapIn" />
+      <wsdl:output message="tns:addFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <wsdl:input message="tns:getUserSoapIn" />
+      <wsdl:output message="tns:getUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserFiles">
+      <wsdl:input message="tns:getUserFilesSoapIn" />
+      <wsdl:output message="tns:getUserFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser">
+      <wsdl:input message="tns:deleteUserSoapIn" />
+      <wsdl:output message="tns:deleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateuser">
+      <wsdl:input message="tns:updateuserSoapIn" />
+      <wsdl:output message="tns:updateuserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="size">
+      <wsdl:input message="tns:sizeSoapIn" />
+      <wsdl:output message="tns:sizeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="planValidate">
+      <wsdl:input message="tns:planValidateSoapIn" />
+      <wsdl:output message="tns:planValidateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <wsdl:input message="tns:downloadFileSoapIn" />
+      <wsdl:output message="tns:downloadFileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DeleteSoap" type="tns:DeleteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="updateFile">
+      <soap:operation soapAction="http://tempuri.org/updateFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayByUser">
+      <soap:operation soapAction="http://tempuri.org/displayByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFile">
+      <soap:operation soapAction="http://tempuri.org/deleteFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveDeletedFile">
+      <soap:operation soapAction="http://tempuri.org/saveDeletedFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFile">
+      <soap:operation soapAction="http://tempuri.org/addFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFiles">
+      <soap:operation soapAction="http://tempuri.org/addFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <soap:operation soapAction="http://tempuri.org/getUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFiles">
+      <soap:operation soapAction="http://tempuri.org/getUserFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser">
+      <soap:operation soapAction="http://tempuri.org/deleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateuser">
+      <soap:operation soapAction="http://tempuri.org/updateuser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="size">
+      <soap:operation soapAction="http://tempuri.org/size" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="planValidate">
+      <soap:operation soapAction="http://tempuri.org/planValidate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <soap:operation soapAction="http://tempuri.org/downloadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DeleteSoap12" type="tns:DeleteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="updateFile">
+      <soap12:operation soapAction="http://tempuri.org/updateFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="displayByUser">
+      <soap12:operation soapAction="http://tempuri.org/displayByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFile">
+      <soap12:operation soapAction="http://tempuri.org/deleteFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveDeletedFile">
+      <soap12:operation soapAction="http://tempuri.org/saveDeletedFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFile">
+      <soap12:operation soapAction="http://tempuri.org/addFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFiles">
+      <soap12:operation soapAction="http://tempuri.org/addFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <soap12:operation soapAction="http://tempuri.org/getUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserFiles">
+      <soap12:operation soapAction="http://tempuri.org/getUserFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser">
+      <soap12:operation soapAction="http://tempuri.org/deleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateuser">
+      <soap12:operation soapAction="http://tempuri.org/updateuser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="size">
+      <soap12:operation soapAction="http://tempuri.org/size" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="planValidate">
+      <soap12:operation soapAction="http://tempuri.org/planValidate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="downloadFile">
+      <soap12:operation soapAction="http://tempuri.org/downloadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Delete">
+    <wsdl:port name="DeleteSoap" binding="tns:DeleteSoap">
+      <soap:address location="http://localhost:55151/Delete.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DeleteSoap12" binding="tns:DeleteSoap12">
+      <soap12:address location="http://localhost:55151/Delete.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
